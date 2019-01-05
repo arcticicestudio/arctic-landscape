@@ -1,0 +1,31 @@
+{
+  "name": "arctic-landscape",
+  "title": "Arctic Landscape",
+  "version": "0.0.0",
+  "description": "An animated drawing of an arctic landscape",
+  "author": {
+    "name": "Arctic Ice Studio",
+    "email": "development@arcticicestudio.com",
+    "url": "https://arcticicestudio.com"
+  },
+  "homepage": "https://github.com/arcticicestudio/arctic-landscape",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcticicestudio/arctic-landscape.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arcticicestudio/arctic-landscape/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "arctic",
+    "landscape",
+    "react",
+    "reactjs",
+    "svg",
+    "drawing",
+    "animation",
+    "nord",
+    "arcticicestudio"
+  ]
+}
