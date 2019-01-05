@@ -1,7 +1,7 @@
 {
   "name": "arctic-landscape",
   "title": "Arctic Landscape",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "An animated drawing of an arctic landscape",
   "author": {
     "name": "Arctic Ice Studio",
@@ -45,7 +45,8 @@
     "format:pretty": "prettier --write \"./**/*.{js,json,jsx,md}\"",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint --ext .js,.jsx .",
-    "lint:md": "remark --no-stdout . \".github/**/*.md\""
+    "lint:md": "remark --no-stdout . \".github/**/*.md\"",
+    "prepublishOnly": "npm-run-all lint build"
   },
   "peerDependencies": {
     "react": "^16.7.0",
