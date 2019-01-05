@@ -1,0 +1,19 @@
+# Copyright (C) 2019-present Arctic Ice Studio <development@arcticicestudio.com>
+# Copyright (C) 2019-present Sven Greb <development@svengreb.de>
+#
+# Project:    Arctic Landscape
+# Repository: https://github.com/arcticicestudio/arctic-landscape
+# License:    MIT
+
+# Configuration for Codecov.
+#
+# References:
+# - https://docs.codecov.io/docs/codecov-yaml
+# - https://docs.codecov.io/docs/node
+
+codecov:
+  branch: develop
+
+parsers:
+  javascript:
+    enable_partials: yes
