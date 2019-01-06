@@ -1,0 +1,22 @@
+{
+  "./dist/arctic-landscape.umd.development.js": {
+    "bundled": 61015,
+    "minified": 40206,
+    "gzipped": 10906
+  },
+  "./dist/arctic-landscape.umd.js": {
+    "bundled": 61015,
+    "minified": 40206,
+    "gzipped": 10906
+  },
+  "./dist/arctic-landscape.cjs.development.js": {
+    "bundled": 58653,
+    "minified": 43168,
+    "gzipped": 11039
+  },
+  "./dist/arctic-landscape.cjs.js": {
+    "bundled": 58653,
+    "minified": 43168,
+    "gzipped": 11039
+  }
+}
