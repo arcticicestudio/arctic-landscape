@@ -159,6 +159,59 @@ The component renders a [Aurora Borealis][wiki-aurbor] that is filled with an an
 <ArcticLandscape auroraBorealisGleamGradientId="custom-gradient-element-id" />
 ```
 
+**NOTE**: The custom `<linear-gradient>` element **must be available in the DOM where the component is rendered in**, otherwise the element with the given ID won't be rendered!
+Also make sure to follow the SVG specification for the custom [`<linear-gradient>` element][mdn-svg-lg] which \*\*must be placed within a [`<defs>` element][mdn-svg-defs], otherwise it won't be recognized in the DOM.
+
+For example, if you'd like to use a custom gradient with different colors, define a new `<svg>` element or React component and place the custom `<linear-gradient>` element in it, wrapped by a `<defs>` element. Afterwards make sure to **give it a unique ID** (`custom-gradient-element-id` in the example above) to be passed to the `auroraBorealisGleamGradientId` prop and render it in the same DOM like the `ArcticLandscape` component.
+
+**CustomAuroraBorealisGradient.jsx**
+
+```jsx
+const CustomAuroraBorealisGradient = () => (
+  <svg>
+    <defs>
+      <linearGradient id="custom-gradient-element-id" x1="50%" x2="50%" y1="0%" y2="100%">
+        <stop offset="0%" stopColor="#d08770">
+          <animate
+            attributeName="stop-color"
+            dur="4s"
+            repeatCount="indefinite"
+            // values="#d08770; #ebcb8b; #d08770"
+          />
+        </stop>
+        <stop offset="50%" stopColor="#ebcb8b">
+          <animate attributeName="stop-color" dur="4s" repeatCount="indefinite" values="#ebcb8b; #a3be8c; #ebcb8b" />
+        </stop>
+        <stop offset="100%" stopColor="#a3be8c">
+          <animate attributeName="stop-color" dur="4s" repeatCount="indefinite" values="#a3be8c; #b48ead; #a3be8c" />
+        </stop>
+      </linearGradient>
+    </defs>
+  </svg>
+);
+
+export default CustomAuroraBorealisGradient;
+```
+
+**App.jsx**
+
+```jsx
+import React, { Fragment } from "react";
+import ArcticLandscape from "arctic-landscape";
+import CustomAuroraBorealisGradient from "./CustomAuroraBorealisGradient";
+
+const App = () => (
+  <Fragment>
+    <CustomAuroraBorealisGradient />
+    <ArcticLandscape pose="erase" auroraBorealisGleamGradientId="custom-gradient-element-id" />
+  </Fragment>
+);
+
+export default App;
+```
+
+The default `<linear-gradient>` element is implemented in the [`GleamGradient` component][gh-src-aurbor-gg].
+
 ### Animation Duration
 
 > **Prop**: `duration`  
@@ -235,59 +288,6 @@ Note that both animation pose names are also available as constants as [named ex
 ```js
 import { POSE_DRAW, POSE_ERASE } from "arctic-landscape";
 ```
-
-**NOTE**: The custom `<linear-gradient>` element **must be available in the DOM where the component is rendered in**, otherwise the element with the given ID won't be rendered!
-Also make sure to follow the SVG specification for the custom [`<linear-gradient>` element][mdn-svg-lg] which \*\*must be placed within a [`<defs>` element][mdn-svg-defs], otherwise it won't be recognized in the DOM.
-
-For example, if you'd like to use a custom gradient with different colors, define a new `<svg>` element or React component and place the custom `<linear-gradient>` element in it, wrapped by a `<defs>` element. Afterwards make sure to **give it a unique ID** (`custom-gradient-element-id` in the example above) to be passed to the `auroraBorealisGleamGradientId` prop and render it in the same DOM like the `ArcticLandscape` component.
-
-**CustomAuroraBorealisGradient.jsx**
-
-```jsx
-const CustomAuroraBorealisGradient = () => (
-  <svg>
-    <defs>
-      <linearGradient id="custom-gradient-element-id" x1="50%" x2="50%" y1="0%" y2="100%">
-        <stop offset="0%" stopColor="#d08770">
-          <animate
-            attributeName="stop-color"
-            dur="4s"
-            repeatCount="indefinite"
-            // values="#d08770; #ebcb8b; #d08770"
-          />
-        </stop>
-        <stop offset="50%" stopColor="#ebcb8b">
-          <animate attributeName="stop-color" dur="4s" repeatCount="indefinite" values="#ebcb8b; #a3be8c; #ebcb8b" />
-        </stop>
-        <stop offset="100%" stopColor="#a3be8c">
-          <animate attributeName="stop-color" dur="4s" repeatCount="indefinite" values="#a3be8c; #b48ead; #a3be8c" />
-        </stop>
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
-export default CustomAuroraBorealisGradient;
-```
-
-**App.jsx**
-
-```jsx
-import React, { Fragment } from "react";
-import ArcticLandscape from "arctic-landscape";
-import CustomAuroraBorealisGradient from "./CustomAuroraBorealisGradient";
-
-const App = () => (
-  <Fragment>
-    <CustomAuroraBorealisGradient />
-    <ArcticLandscape pose="erase" auroraBorealisGleamGradientId="custom-gradient-element-id" />
-  </Fragment>
-);
-
-export default App;
-```
-
-The default `<linear-gradient>` element is implemented in the [`GleamGradient` component][gh-src-aurbor-gg].
 
 ## Development Workflow
 
